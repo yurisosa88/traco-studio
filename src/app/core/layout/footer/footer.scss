@@ -1,0 +1,35 @@
+:host {
+  display: block;
+  background-color: var(--color-surface);
+}
+
+.footer {
+  border-top: 1px solid rgba(237, 231, 221, 0.12);
+  background-color: var(--color-surface);
+}
+
+.footer__inner {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 auto;
+  max-width: 1200px;
+  min-height: 72px;
+  padding: 0 1.5rem;
+}
+
+.footer__inner p {
+  color: rgba(237, 231, 221, 0.8);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .footer__inner {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem 1.25rem;
+  }
+}

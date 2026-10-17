@@ -1,0 +1,29 @@
+<section [id]="sectionId" class="hero" aria-labelledby="hero-title">
+  <div class="hero__media" [style.--hero-image]="'url(' + content.image + ')'" aria-hidden="true">
+    <div class="hero__overlay"></div>
+    <div class="hero__grain"></div>
+  </div>
+
+  <div class="hero__content">
+    <p class="hero__eyebrow">{{ content.eyebrow }}</p>
+
+    <h1 id="hero-title">{{ content.title }}</h1>
+
+    <p class="hero__description">{{ content.description }}</p>
+
+    @if (enabledSections[content.primaryAction.section] || enabledSections[content.secondaryAction.section]) {
+      <div class="hero__actions" aria-label="Ações do hero">
+        @if (enabledSections[content.primaryAction.section]) {
+          <a class="hero__button hero__button--primary" [href]="getSectionHref(content.primaryAction.section)">
+            {{ content.primaryAction.label }}
+          </a>
+        }
+        @if (enabledSections[content.secondaryAction.section]) {
+          <a class="hero__button hero__button--secondary" [href]="getSectionHref(content.secondaryAction.section)">
+            {{ content.secondaryAction.label }}
+          </a>
+        }
+      </div>
+    }
+  </div>
+</section>

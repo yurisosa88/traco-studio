@@ -1,0 +1,23 @@
+<section [id]="sectionId" class="process" aria-labelledby="process-title">
+  <div class="process__intro" revealOnScroll>
+    <div>
+      <p class="process__eyebrow">PROCESSO</p>
+      <h2 id="process-title">Da ideia à sua próxima tatuagem</h2>
+    </div>
+    <p class="process__description">
+      Um caminho cuidadoso e transparente, da primeira conversa aos cuidados depois da sessão.
+    </p>
+  </div>
+
+  <div class="process__steps">
+    @for (step of steps; track step.id; let index = $index) {
+      <article class="process__step" revealOnScroll [revealOnScrollDelay]="index * 65">
+        <span class="process__number" aria-hidden="true">{{ step.number }}</span>
+        <div class="process__copy">
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.description }}</p>
+        </div>
+      </article>
+    }
+  </div>
+</section>

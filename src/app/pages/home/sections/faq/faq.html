@@ -1,0 +1,39 @@
+<section [id]="sectionId" class="faq" aria-labelledby="faq-title">
+  <div class="faq__layout">
+    <header class="faq__intro" revealOnScroll>
+      <p class="faq__eyebrow">PERGUNTAS FREQUENTES</p>
+      <h2 id="faq-title">Dúvidas antes de transformar sua ideia em arte?</h2>
+    </header>
+
+    <div class="faq__list">
+      @for (item of items; track item.id; let index = $index) {
+        <article class="faq__item" revealOnScroll [revealOnScrollDelay]="(index % 3) * 55">
+          <h3 class="faq__question-heading">
+            <button
+              type="button"
+              class="faq__question"
+              [id]="'faq-question-' + item.id"
+              [attr.aria-expanded]="isExpanded(item.id)"
+              [attr.aria-controls]="'faq-answer-' + item.id"
+              (click)="toggleItem(item.id)"
+            >
+              <span>{{ item.question }}</span>
+              <span class="faq__indicator" aria-hidden="true">
+                {{ isExpanded(item.id) ? '−' : '+' }}
+              </span>
+            </button>
+          </h3>
+          <div
+            class="faq__answer"
+            [id]="'faq-answer-' + item.id"
+            [hidden]="!isExpanded(item.id)"
+            role="region"
+            [attr.aria-labelledby]="'faq-question-' + item.id"
+          >
+            <p>{{ item.answer }}</p>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+<section [id]="sectionId" class="about" aria-labelledby="about-title">
+  <picture class="about__media" [attr.aria-label]="content.imageLabel" role="img" revealOnScroll revealOnScrollEffect="fade-left">
+    <source [srcset]="content.imageMobile" media="(max-width: 767px)" />
+    <source [srcset]="content.imageDesktop" media="(min-width: 768px)" />
+    <img
+      [src]="content.imageDesktop"
+      [alt]="content.imageAlt"
+    />
+  </picture>
+
+  <div class="about__content" revealOnScroll [revealOnScrollDelay]="100">
+    <p class="about__eyebrow">{{ content.eyebrow }}</p>
+    <h2 id="about-title">{{ content.title }}</h2>
+
+    @for (paragraph of content.paragraphs; track $index) {
+      <p>{{ paragraph }}</p>
+    }
+
+    @if (enabledSections[content.action.section]) {
+      <a class="about__link" [href]="getSectionHref(content.action.section)">{{ content.action.label }}</a>
+    }
+  </div>
+</section>

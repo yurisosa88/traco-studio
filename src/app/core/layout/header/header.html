@@ -1,12 +1,25 @@
 <header class="header" aria-label="Cabeçalho principal">
   <div class="header__inner">
-    <a class="header__brand" href="/" aria-label="Página inicial do Traço Studio">Traço Studio</a>
+    <a class="header__brand" href="#inicio" [attr.aria-label]="brand.homeLabel">{{ brand.name }}</a>
 
-    <nav class="header__nav" aria-label="Navegação principal">
-      <a href="/">Início</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#portfolio">Portfólio</a>
-      <a href="#contato">Contato</a>
+    <button
+      class="header__menu-toggle"
+      type="button"
+      [class.header__menu-toggle--open]="isMenuOpen"
+      [attr.aria-expanded]="isMenuOpen"
+      aria-controls="primary-navigation"
+      [attr.aria-label]="isMenuOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação'"
+      (click)="toggleMenu()"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="header__nav" id="primary-navigation" aria-label="Navegação principal">
+      @for (item of navigationItems; track item.href) {
+        <a [href]="item.href" (click)="closeMenu()">{{ item.label }}</a>
+      }
     </nav>
   </div>
 </header>

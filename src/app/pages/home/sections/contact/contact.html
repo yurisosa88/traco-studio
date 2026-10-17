@@ -1,0 +1,55 @@
+<section [id]="sectionId" class="contact" aria-labelledby="contact-title">
+  <div class="contact__layout">
+    <div class="contact__intro" revealOnScroll>
+      <p class="contact__eyebrow">{{ content.eyebrow }}</p>
+      <h2 id="contact-title">{{ content.title }}</h2>
+      <p class="contact__description">{{ content.description }}</p>
+    </div>
+
+    <div class="contact__details">
+      <app-contact-methods [methods]="content.methods" revealOnScroll [revealOnScrollDelay]="60"></app-contact-methods>
+
+      @if (content.socialLinks.length > 0) {
+        <div class="contact__socials" revealOnScroll [revealOnScrollDelay]="100">
+          <h3>Encontre o estúdio</h3>
+          <app-social-links [links]="content.socialLinks"></app-social-links>
+        </div>
+      }
+
+    </div>
+  </div>
+
+  @if (isLocationVisible) {
+    <section class="contact__location" aria-labelledby="contact-location-title">
+      <div class="contact__location-content" revealOnScroll>
+        <p class="contact__location-eyebrow">ONDE ESTAMOS</p>
+        <h3 id="contact-location-title">{{ content.location.establishmentName }}</h3>
+        <address>{{ content.location.address }}</address>
+
+        @if (directionsUrl; as validatedDirectionsUrl) {
+          <a
+            class="contact__directions"
+            [href]="validatedDirectionsUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Como chegar
+            <span aria-hidden="true">↗</span>
+          </a>
+        }
+      </div>
+
+      @if (mapEmbedUrl; as validatedMapEmbedUrl) {
+        <div class="contact__map" revealOnScroll [revealOnScrollDelay]="80">
+          <iframe
+            [src]="validatedMapEmbedUrl"
+            [title]="'Mapa de localização: ' + content.location.establishmentName"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+      }
+    </section>
+  }
+</section>

@@ -1,0 +1,24 @@
+<section [id]="sectionId" class="specialties" aria-labelledby="specialties-title">
+  <div class="specialties__intro" revealOnScroll>
+    <div>
+      <p class="specialties__eyebrow">ESPECIALIDADES</p>
+      <h2 id="specialties-title">Uma linguagem para cada história</h2>
+    </div>
+    <p class="specialties__description">
+      Diferentes técnicas, sempre com atenção à composição, à intenção e à forma como cada arte
+      encontra seu espaço na pele.
+    </p>
+  </div>
+
+  <div class="specialties__list">
+    @for (specialty of specialties; track specialty.id; let index = $index) {
+      <article class="specialties__item" revealOnScroll [revealOnScrollDelay]="index * 65">
+        <span class="specialties__number" aria-hidden="true">{{ specialty.number }}</span>
+        <div class="specialties__copy">
+          <h3>{{ specialty.title }}</h3>
+          <p>{{ specialty.description }}</p>
+        </div>
+      </article>
+    }
+  </div>
+</section>

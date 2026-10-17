@@ -1,3 +1,21 @@
 <main class="home" aria-label="Página inicial">
-  <h1>Traço Studio</h1>
+  <app-hero></app-hero>
+  @if (enabledSections.about) {
+    <app-about></app-about>
+  }
+  @if (enabledSections.portfolio) {
+    <app-portfolio></app-portfolio>
+  }
+  @if (enabledSections.specialties) {
+    <app-specialties></app-specialties>
+  }
+  @if (enabledSections.process) {
+    <app-process></app-process>
+  }
+  @if (enabledSections.faq) {
+    <app-faq></app-faq>
+  }
+  @if (enabledSections.contact) {
+    <app-contact></app-contact>
+  }
 </main>

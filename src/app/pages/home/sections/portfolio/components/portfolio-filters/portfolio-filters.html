@@ -1,0 +1,13 @@
+<div class="portfolio-filters" aria-label="Filtros do portfólio">
+  @for (filter of filters; track filter.value) {
+    <button
+      type="button"
+      class="portfolio-filters__button"
+      [class.is-active]="filter.value === selectedFilter"
+      [attr.aria-pressed]="filter.value === selectedFilter"
+      (click)="selectFilter(filter.value)"
+    >
+      {{ filter.label }}
+    </button>
+  }
+</div>

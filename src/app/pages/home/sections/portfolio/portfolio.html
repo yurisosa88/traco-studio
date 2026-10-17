@@ -1,0 +1,37 @@
+<section [id]="sectionId" class="portfolio" aria-labelledby="portfolio-title">
+  <div class="portfolio__intro" revealOnScroll>
+    <p class="portfolio__eyebrow">PORTFÓLIO</p>
+    <h2 id="portfolio-title">Arte que conta histórias</h2>
+    <p class="portfolio__description">
+      Cada traço é pensado para refletir personalidade, memória e presença, criando peças que
+      dialogam com quem você é.
+    </p>
+  </div>
+
+  <app-portfolio-filters
+    [filters]="filters"
+    [selectedFilter]="selectedFilter"
+    (filterChange)="onFilterChange($event)"
+  ></app-portfolio-filters>
+
+  @if (filteredWorks.length > 0) {
+    <div class="portfolio__grid" role="list" aria-label="Galeria de trabalhos do portfólio">
+      @for (work of filteredWorks; track work.id; let index = $index) {
+        <div role="listitem" revealOnScroll [revealOnScrollDelay]="(index % 3) * 55">
+          <app-portfolio-card [work]="work" (open)="openLightbox(work)"></app-portfolio-card>
+        </div>
+      }
+    </div>
+  } @else {
+    <p class="portfolio__empty">Nenhum projeto encontrado para este filtro.</p>
+  }
+
+  <app-portfolio-lightbox
+    [work]="selectedWork"
+    [index]="currentIndex"
+    [total]="filteredWorks.length"
+    (close)="closeLightbox()"
+    (previous)="showPrevious()"
+    (next)="showNext()"
+  ></app-portfolio-lightbox>
+</section>

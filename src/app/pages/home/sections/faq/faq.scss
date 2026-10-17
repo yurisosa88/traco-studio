@@ -1,0 +1,153 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.faq {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(3rem, 6vw, 5rem) 1.5rem;
+  padding-block: var(--home-section-boundary-space);
+}
+
+.faq__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: start;
+  gap: clamp(2rem, 7vw, 6rem);
+}
+
+.faq__intro {
+  position: sticky;
+  top: 6rem;
+}
+
+.faq__eyebrow {
+  margin: 0 0 1rem;
+  color: var(--color-accent);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.faq__intro h2 {
+  max-width: 480px;
+  font-size: clamp(2.5rem, 4.5vw, 4.25rem);
+  line-height: 0.98;
+}
+
+.faq__item {
+  border-top: 1px solid rgba(237, 231, 221, 0.2);
+}
+
+.faq__item:last-child {
+  border-bottom: 1px solid rgba(237, 231, 221, 0.2);
+}
+
+.faq__question-heading {
+  margin: 0;
+}
+
+.faq__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  width: 100%;
+  min-height: 76px;
+  padding: 1.15rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq__question:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+.faq__indicator {
+  flex: 0 0 2rem;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid rgba(182, 139, 105, 0.55);
+  border-radius: 50%;
+  color: var(--color-accent);
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.faq__answer {
+  padding: 0 3.25rem 1.35rem 0;
+}
+
+.faq__answer[hidden] {
+  display: none;
+}
+
+.faq__answer:not([hidden]) {
+  animation: faqAnswerReveal 0.24s ease-out both;
+}
+
+.faq__answer p {
+  max-width: 620px;
+  color: rgba(237, 231, 221, 0.76);
+  font-size: 0.98rem;
+  line-height: 1.8;
+}
+
+@keyframes faqAnswerReveal {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 767px) {
+  .faq {
+    padding: var(--home-section-boundary-space) 1rem;
+  }
+
+  .faq__layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .faq__intro {
+    position: static;
+  }
+
+  .faq__intro h2 {
+    font-size: clamp(2.2rem, 9vw, 3.2rem);
+  }
+
+  .faq__question {
+    min-height: 68px;
+    font-size: 1.05rem;
+  }
+
+  .faq__answer {
+    padding: 0 2.75rem 1.2rem 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq__answer:not([hidden]) {
+    animation: none;
+  }
+}

@@ -1,0 +1,43 @@
+@if (work) {
+  <div class="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" aria-describedby="lightbox-description" (click)="close.emit()">
+    <div class="lightbox__panel" (click)="$event.stopPropagation()" tabindex="-1">
+      <button type="button" class="lightbox__close" aria-label="Fechar visualização" (click)="close.emit()">
+        ×
+      </button>
+
+      <div class="lightbox__media">
+        <img [src]="work.image" [alt]="work.alt" />
+        <button
+          type="button"
+          class="lightbox__arrow lightbox__arrow--previous"
+          aria-label="Imagem anterior"
+          [disabled]="index === 0"
+          (click)="previous.emit()"
+        >
+          ←
+        </button>
+        <button
+          type="button"
+          class="lightbox__arrow lightbox__arrow--next"
+          aria-label="Próxima imagem"
+          [disabled]="index === total - 1"
+          (click)="next.emit()"
+        >
+          →
+        </button>
+      </div>
+
+      <div class="lightbox__details">
+        <p class="lightbox__eyebrow">{{ work.style }}</p>
+        <h3 id="lightbox-title">{{ work.title }}</h3>
+        <p id="lightbox-description">{{ work.description }}</p>
+
+        <div class="lightbox__meta">
+          <span>{{ work.dimensions }}</span>
+          <span>{{ currentLabel }}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+}

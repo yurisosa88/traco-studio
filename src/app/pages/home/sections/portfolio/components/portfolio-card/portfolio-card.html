@@ -1,0 +1,8 @@
+<button type="button" class="portfolio-card" (click)="open.emit(work)" [attr.aria-label]="'Abrir obra ' + work.title">
+  <img class="portfolio-card__image" [src]="work.image" [alt]="work.alt" loading="lazy" decoding="async" />
+
+  <span class="portfolio-card__content">
+    <span class="portfolio-card__style">{{ work.style }}</span>
+    <span class="portfolio-card__title">{{ work.title }}</span>
+  </span>
+</button>
